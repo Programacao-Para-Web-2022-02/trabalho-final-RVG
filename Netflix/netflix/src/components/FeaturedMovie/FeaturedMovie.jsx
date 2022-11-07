@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import './FeaturedMovie.css';
 import PropTypes from "prop-types";
 
+// tirei a key por motivos de segurança
 
-
-const searchYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCKdkeIFKZy59qC_FLwcbE0v2I7Vsi1YmE&type=video&q=`;
+const searchYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=  =`;
 
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${searchYoutube}${endpoint}`);
