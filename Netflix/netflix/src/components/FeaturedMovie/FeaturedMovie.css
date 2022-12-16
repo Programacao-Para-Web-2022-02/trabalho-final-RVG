@@ -42,10 +42,48 @@
     margin-right: 15px;
 }
 
+.featured--year,
+.featured--seasons{
+    margin-top: 23px;
+}
+
 .featured--points{
     color: #46d369;
 }
 
+.avaliacao{
+    display: flex;
+}
+
+.box-stars{
+    margin-left: -40px; 
+}
+
+.stars{
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+}
+
+.star-icon{
+list-style-type: none;
+cursor: pointer;
+color: #ffe500;
+font-size: 1.5rem;/* alterar o tamanho das estrelas */
+}
+.star-icon::before{
+content: "\2606";
+}
+.stars:hover .star-icon::before{
+content: "\2605";
+}
+
+.ativo.star-icon::before{
+    content: "\2605";
+}
+
+.star-icon:hover ~ .star-icon::before{
+content: "\2606";
+}
 
 .featured--description{
     margin-top: 15px;

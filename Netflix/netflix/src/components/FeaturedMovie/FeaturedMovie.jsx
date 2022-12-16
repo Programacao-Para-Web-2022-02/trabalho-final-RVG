@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import './FeaturedMovie.css';
 import PropTypes from "prop-types";
 
-// tirei a key por motivos de segurança
 
-const searchYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=  =`;
+
+const searchYoutube = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCKdkeIFKZy59qC_FLwcbE0v2I7Vsi1YmE&type=video&q=`;
 
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${searchYoutube}${endpoint}`);
@@ -15,6 +15,10 @@ const basicFetch = async (endpoint) => {
 
 
 export default ({item}) => {
+
+    const [rating, setRatting] = useState(0);
+
+    
 
     const [video, setVideoID] = useState();
 
@@ -79,7 +83,20 @@ export default ({item}) => {
                         {item.name ?? item.original_title}
                     </div>
                     <div className="featured--info">
-                        <div className="featured--points">{item.vote_average} pontos</div>
+                        <div className="featured--points">
+                        <ul class="avaliacao">
+                            
+                            <div className="box-stars">
+                            {Array.from({length: 5}).map((_, i) =>(
+                                <button className="stars" onClick={() => setRatting(i+1)}>
+                                     <li class={`star-icon ${i < rating ? 'ativo' : ''}`} data-avaliacao={i+1} />
+                                </button>
+
+                            ))}
+                            </div>
+                            
+                        </ul>
+                        </div>
                         <div className="featured--year">lançamento: {firstDate == 'Invalid Date' ? dateMovie.getFullYear() : firstDate.getFullYear()}</div>
                         <div className="featured--seasons">{item.number_of_seasons} {item.number_of_seasons > 0 ? 'temporada' : ' '}{item.number_of_seasons > 0 && item.number_of_seasons !== 1 ? 's ' : ' '}</div>
                     </div>
